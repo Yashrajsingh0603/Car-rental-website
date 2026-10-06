@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DriveX - Premium Car Rental</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>Drive</span><b>X</b>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="cars.html">Cars</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="nav-btn" onclick="scrollToCars()">
+        Rent a Car
+    </button>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+
+        <p class="small-heading">
+            PREMIUM CAR RENTAL SERVICE
+        </p>
+
+        <h1>
+            Your Journey.
+            <span>Your Car.</span>
+            Your Freedom.
+        </h1>
+
+        <p class="hero-text">
+            Experience premium cars, transparent pricing and effortless
+            booking. Choose your perfect ride and hit the road.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="primary-btn" onclick="scrollToCars()">
+                Explore Cars →
+            </button>
+
+            <button class="secondary-btn" onclick="showAbout()">
+                Learn More
+            </button>
+
+        </div>
+
+        <div class="hero-trust">
+
+            <div class="avatars">
+                <div>A</div>
+                <div>R</div>
+                <div>P</div>
+                <div>+</div>
+            </div>
+
+            <div>
+                <strong>25,000+ Happy Customers</strong>
+                <small>Trusted across India</small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-car">
+
+        <img src="images/hero-background.jpg" alt="Premium Rental Car">
+
+        <div class="car-glow"></div>
+
+    </div>
+
+
+    <div class="floating-card available-card">
+
+        <div class="floating-icon">🚗</div>
+
+        <div>
+            <strong>500+</strong>
+            <small>Premium Cars</small>
+        </div>
+
+    </div>
+
+
+    <div class="floating-card rating-card">
+
+        <div class="rating-big">★</div>
+
+        <div>
+            <strong>4.9 / 5</strong>
+            <small>Customer Rating</small>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SEARCH BOX ================= -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        <div class="search-item">
+            <label>📍 Pickup Location</label>
+            <input type="text" id="pickup" placeholder="Enter city or location">
+        </div>
+
+        <div class="search-item">
+            <label>📍 Return Location</label>
+            <input type="text" id="returnLocation" placeholder="Enter return location">
+        </div>
+
+        <div class="search-item">
+            <label>📅 Pickup Date</label>
+            <input type="date" id="pickupDate">
+        </div>
+
+        <div class="search-item">
+            <label>📅 Return Date</label>
+            <input type="date" id="returnDate">
+        </div>
+
+        <button class="search-btn" onclick="searchCars()">
+            Search Cars
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div>
+        <h2>500+</h2>
+        <p>Premium Cars</p>
+    </div>
+
+    <div>
+        <h2>25K+</h2>
+        <p>Happy Customers</p>
+    </div>
+
+    <div>
+        <h2>30+</h2>
+        <p>Locations</p>
+    </div>
+
+    <div>
+        <h2>4.9/5</h2>
+        <p>Customer Rating</p>
+    </div>
+
+</section>
+
+
+<!-- ================= CARS ================= -->
+
+<section class="cars" id="cars">
+
+    <div class="section-heading">
+
+        <p class="small-heading">OUR PREMIUM FLEET</p>
+
+        <h2>Choose Your Perfect Ride.</h2>
+
+        <p>
+            From luxury sedans to powerful SUVs, find a car
+            that matches your journey.
+        </p>
+
+    </div>
+
+    <!-- Filters -->
+
+    <div class="car-filters">
+
+        <button class="filter-btn active" onclick="filterCars('all')">
+            All Cars
+        </button>
+
+        <button class="filter-btn" onclick="filterCars('luxury')">
+            Luxury
+        </button>
+
+        <button class="filter-btn" onclick="filterCars('suv')">
+            SUV
+        </button>
+
+        <button class="filter-btn" onclick="filterCars('sedan')">
+            Sedan
+        </button>
+
+        <button class="filter-btn" onclick="filterCars('electric')">
+            Electric
+        </button>
+
+    </div>
+
+
+    <!-- Cars -->
+
+    <div class="car-grid">
+
+
+        <!-- Car 1 -->
+
+        <div class="car-card" data-category="luxury">
+
+            <div class="car-image">
+
+                <img src="images/mercedes-benz-eclass.jpg"
+                     alt="Mercedes Benz E-Class">
+
+                <span class="car-badge">
+                    Luxury
+                </span>
+
+            </div>
+
+            <div class="car-info">
+
+                <div class="car-title">
+
+                    <div>
+                        <h3>Mercedes-Benz E-Class</h3>
+                        <span>Automatic • 5 Seats</span>
+                    </div>
+
+                    <div class="car-rating">
+                        ★ 4.9
+                    </div>
+
+                </div>
+
+                <div class="car-bottom">
+
+                    <div class="price">
+                        ₹8,500
+                        <small>/ day</small>
+                    </div>
+
+                    <button
+                        class="book-btn"
+                        onclick="openBooking('Mercedes-Benz E-Class',8500)">
+                        Book Now →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Car 2 -->
+
+        <div class="car-card" data-category="suv">
+
+            <div class="car-image">
+
+                <img src="images/range-rover-evoque.jpg"
+                     alt="Range Rover Evoque">
+
+                <span class="car-badge">
+                    SUV
+                </span>
+
+            </div>
+
+            <div class="car-info">
+
+                <div class="car-title">
+
+                    <div>
+                        <h3>Range Rover Evoque</h3>
+                        <span>Automatic • 5 Seats</span>
+                    </div>
+
+                    <div class="car-rating">
+                        ★ 4.8
+                    </div>
+
+                </div>
+
+                <div class="car-bottom">
+
+                    <div class="price">
+                        ₹10,500
+                        <small>/ day</small>
+                    </div>
+
+                    <button
+                        class="book-btn"
+                        onclick="openBooking('Range Rover Evoque',10500)">
+                        Book Now →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Car 3 -->
+
+        <div class="car-card" data-category="sedan">
+
+            <div class="car-image">
+
+                <img src="images/bmw-x5.jpg"
+                     alt="BMW 5 Series">
+
+                <span class="car-badge">
+                    Sedan
+                </span>
+
+            </div>
+
+            <div class="car-info">
+
+                <div class="car-title">
+
+                    <div>
+                        <h3>BMW 5 Series</h3>
+                        <span>Automatic • 5 Seats</span>
+                    </div>
+
+                    <div class="car-rating">
+                        ★ 4.9
+                    </div>
+
+                </div>
+
+                <div class="car-bottom">
+
+                    <div class="price">
+                        ₹7,500
+                        <small>/ day</small>
+                    </div>
+
+                    <button
+                        class="book-btn"
+                        onclick="openBooking('BMW 5 Series',7500)">
+                        Book Now →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Car 4 -->
+
+        <div class="car-card" data-category="electric">
+
+            <div class="car-image">
+
+                <img src="images/tesla-model3.jpg"
+                     alt="Tesla Model 3">
+
+                <span class="car-badge">
+                    Electric
+                </span>
+
+            </div>
+
+            <div class="car-info">
+
+                <div class="car-title">
+
+                    <div>
+                        <h3>Tesla Model 3</h3>
+                        <span>Automatic • 5 Seats</span>
+                    </div>
+
+                    <div class="car-rating">
+                        ★ 4.8
+                    </div>
+
+                </div>
+
+                <div class="car-bottom">
+
+                    <div class="price">
+                        ₹6,500
+                        <small>/ day</small>
+                    </div>
+
+                    <button
+                        class="book-btn"
+                        onclick="openBooking('Tesla Model 3',6500)">
+                        Book Now →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services" id="services">
+
+    <div class="center-heading">
+
+        <p class="small-heading">WHY DRIVEX</p>
+
+        <h2>
+            Everything You Need
+            <span>On The Road</span>
+        </h2>
+
+        <p>
+            We make renting a car simple, flexible and stress-free.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+        <div class="service-card">
+            <div class="service-icon">🚗</div>
+            <h3>Premium Fleet</h3>
+            <p>
+                Choose from a carefully maintained collection
+                of premium vehicles.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">⚡</div>
+            <h3>Quick Booking</h3>
+            <p>
+                Book your vehicle in minutes with our simple
+                online reservation system.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🛡️</div>
+            <h3>Fully Insured</h3>
+            <p>
+                Drive confidently with comprehensive insurance
+                and roadside assistance.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">💳</div>
+            <h3>Transparent Pricing</h3>
+            <p>
+                No hidden charges. What you see is what
+                you pay.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+    <div class="about-image">
+
+        <img src="images/main-profile.jpg" alt="DriveX">
+
+    </div>
+
+    <div class="about-content">
+
+        <p class="small-heading">ABOUT DRIVEX</p>
+
+        <h2>
+            More Than Just
+            <span>A Car Rental</span>
+        </h2>
+
+        <p>
+            DriveX is built around one simple idea — renting a car
+            should be easy, transparent and enjoyable.
+        </p>
+
+        <p>
+            Whether you're travelling for business, planning a
+            weekend getaway or simply need a reliable vehicle,
+            our fleet is ready for you.
+        </p>
+
+        <div class="about-points">
+
+            <div>✓ Well maintained vehicles</div>
+            <div>✓ 24/7 customer support</div>
+            <div>✓ Flexible rental periods</div>
+            <div>✓ Easy online booking</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REVIEWS ================= -->
+
+<section class="reviews" id="reviews">
+
+    <div class="center-heading">
+
+        <p class="small-heading">CUSTOMER STORIES</p>
+
+        <h2>
+            Loved By
+            <span>Thousands</span>
+        </h2>
+
+    </div>
+
+
+    <div class="review-grid">
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "The booking process was incredibly simple.
+                The car was spotless and exactly as shown."
+            </p>
+
+            <div class="review-user">
+                <div class="avatar">A</div>
+
+                <div>
+                    <strong>Arjun Sharma</strong>
+                    <small>Delhi</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "Excellent service and a fantastic collection
+                of premium cars. Highly recommended."
+            </p>
+
+            <div class="review-user">
+                <div class="avatar">R</div>
+
+                <div>
+                    <strong>Rahul Mehta</strong>
+                    <small>Gurgaon</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="stars">★★★★★</div>
+
+            <p>
+                "Very transparent pricing and great customer
+                support. Will definitely rent again."
+            </p>
+
+            <div class="review-user">
+                <div class="avatar">P</div>
+
+                <div>
+                    <strong>Priya Kapoor</strong>
+                    <small>Mumbai</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="faq">
+
+    <div class="center-heading">
+
+        <p class="small-heading">FAQ</p>
+
+        <h2>
+            Frequently Asked
+            <span>Questions</span>
+        </h2>
+
+    </div>
+
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+
+            <button onclick="toggleFAQ(this)">
+                What documents do I need to rent a car?
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                You generally need a valid driving licence,
+                government ID and a valid payment method.
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button onclick="toggleFAQ(this)">
+                Can I cancel my booking?
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                Yes. Cancellation policies depend on the
+                selected vehicle and booking plan.
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button onclick="toggleFAQ(this)">
+                Can I extend my rental?
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                Yes, rental periods can be extended depending
+                on vehicle availability.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <div>
+
+        <p class="small-heading">READY TO DRIVE?</p>
+
+        <h2>
+            Your Next Adventure
+            <span>Starts Here.</span>
+        </h2>
+
+        <p>
+            Choose your car and start your journey today.
+        </p>
+
+        <button class="primary-btn" onclick="scrollToCars()">
+            Browse Cars →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contact">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="logo">
+                <span>Drive</span><b>X</b>
+            </div>
+
+            <p>
+                Premium car rental made simple.
+                Your journey starts with DriveX.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Company</h3>
+
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="cars.html">Our Cars</a>
+            <a href="#reviews">Reviews</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>Contact</h3>
+
+            <p>📍 New Delhi, India</p>
+            <p>📞 +91 98765 43210</p>
+            <p>✉ hello@drivex.com</p>
+
+        </div>
+
+
+        <div>
+
+            <h3>Follow Us</h3>
+
+            <div class="socials">
+                <span>Instagram</span>
+                <span>Facebook</span>
+                <span>LinkedIn</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 DriveX. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= BOOKING MODAL ================= -->
+
+<div class="modal" id="bookingModal">
+
+    <!-- modal ka heading / selected car wala code -->
+
+    <div class="booking-form">
+
+        <!-- YAHAN mera naya form code -->
+
+    </div>
+
+    <!-- total price / confirm button wala code -->
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
